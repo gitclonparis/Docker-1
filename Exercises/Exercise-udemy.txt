@@ -1,0 +1,30 @@
+# Exercise 3.1
+
+docker container run -ti --name c1 alpine
+docker container commit c1 myping
+docker container run -ti myping
+
+#################################
+
+nano Dockerfile-v1
+FROM alpine
+ENTRYPOINT ["ping"]
+docker image build -f Dockerfile-v1 -t ping:1.0 .  # ==> erore pas d'argument
+docker container run ping:1.0 -c 3 8.8.8.8		   # ==> la c bon
+
+nano Dockerfile-v2
+FROM alpine
+CMD ["ping"]
+docker image build -f Dockerfile-v2 -t ping:2.0 .
+docker container run ping:2.0					# errore
+docker container run ping:2.0 -c 3 8.8.8.8		# errore
+docker container run ping:2.0 ping -c 3 8.8.8.8 # ok
+
+
+nano Dockerfile-v3
+FROM alpine
+ENTRYPOINT ["ping"]
+CMD ["-c3", "localhost"]
+docker image build -f Dockerfile-v3 -t ping:3.0 .
+docker container run ping:3.0
+docker container run ping:3.0 8.8.8.8

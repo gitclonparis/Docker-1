@@ -1,0 +1,96 @@
+
+
+============================================================
+docker container ls
+docker ps
+docker container ls -a
+docker ps -a
+docker container ls -aq
+docker ps -aq 
+docker container ls -aq
+
+=============================================================
+
+docker container run --name www -d nginx
+docker container run -d -p 8080:80 nginx
+docker container run -d -p 3000:80 nginx
+docker run -p 8080:80 mynginx
+docker run –v /var/www/html:/var/www/html  mynginx
+docker run --link web:DataBase mynginx
+
+=============================================================
+docker container run alpine echo hello
+docker container run -ti alpine
+docker container run alpine ping 8.8.8.8
+docker container run -ti alpine ping 8.8.8.8
+docker container run -d --name ping alpine ping 8.8.8.8
+
+docker container run -d --name mongo mongo:3.4
+docker container run --rm -p 27017:27017 mongo:3.3
+docker container run -e MYSQL_ROOT_PASSWORD=1234 -p 3306:3306 mysql:8.0
+
+==============================================================
+
+docker container logs -f idcontenaore
+docker container logs -f ping
+
+==============================================================
+La commande suivante permet de lancer un shell sh  dans le container ping:
+docker exec -ti ping sh
+docker container exec -ti mongo bash
+docker container exec -ti cdda1c0c380e bash
+
+=============================================================
+
+
+docker container stop $(docker container ls -q)
+docker container rm $(docker container ls -aq)
+docker container rm -f $(docker container ls -aq)
+===========================================================
+
+docker start  cdda1c0c380e
+
+
+============================================================
+
+docker container run -ti ubuntu
+# apt-get update -y
+# apt-get install figlet
+figlet Holla
+
+============================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+==================================================
+docker inspect --format "{‌{ .Name }}" idcontenaire
+docker inspect -f '{‌{ .NetworkSettings.IPAddress }}' idcontenaire
+docker container inspect --format "{{ .Config.Hostname }}" www
+docker container inspect --format "{‌{ .NetworkSettings.IPAddress }}" www
+
+
+--format=
+‘{{range .NetworkSettings.Networks}}{{.IPAddress}}{{en d}}’
+‘Alphorm vous salut {{.Name}}’
+tender_Chandrasekhar
+{{with .State}} {{$.Name}} mon PiD {{.Pid}}
+{{end}}' tender_chandrasekhar
+
+====================================================
